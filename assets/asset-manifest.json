@@ -1,0 +1,102 @@
+{
+  "project": "KISEKI — anime-web-studio demo",
+  "art_direction": "Modern Streaming",
+  "generated_at": "2026-08-31",
+  "assets": [
+    {
+      "name": "hero_key_art",
+      "type": "image",
+      "source_url": "generated/pollinations.ai",
+      "tool": "Pollinations.ai (image.pollinations.ai)",
+      "prompt_summary": "anime girl protagonist, night city neon, red scarf, cel shading, rim light, red accent palette, cinematic",
+      "license": "user-defined",
+      "attribution_required": false,
+      "commercial_use": true,
+      "modification_allowed": true,
+      "redistribution_allowed": true,
+      "note": "AI-generated original — karakter & scene fiksi, bukan turunan anime yang ada",
+      "post_process": "ImageMagick cel-flat (-dither none -colors 8)"
+    },
+    {
+      "name": "char_rin_portrait",
+      "type": "image",
+      "source_url": "generated/pollinations.ai",
+      "tool": "Pollinations.ai",
+      "prompt_summary": "anime character portrait, teen girl short dark hair red scarf, night city bokeh, cel shading, rim light",
+      "license": "user-defined",
+      "attribution_required": false,
+      "commercial_use": true,
+      "modification_allowed": true,
+      "note": "AI-generated original — Amamiya Rin (karakter fiksi)"
+    },
+    {
+      "name": "char_kenji_portrait",
+      "type": "image",
+      "source_url": "generated/pollinations.ai",
+      "tool": "Pollinations.ai",
+      "prompt_summary": "anime character portrait, young man glasses dark blue jacket, evening city bokeh, cel shading, rim light",
+      "license": "user-defined",
+      "attribution_required": false,
+      "commercial_use": true,
+      "modification_allowed": true,
+      "note": "AI-generated original — Sorano Kenji (karakter fiksi)"
+    },
+    {
+      "name": "char_guardian_portrait",
+      "type": "image",
+      "source_url": "generated/pollinations.ai",
+      "tool": "Pollinations.ai",
+      "prompt_summary": "anime character portrait, mysterious hooded figure glowing golden lantern, dark garden, cel shading, golden rim light",
+      "license": "user-defined",
+      "attribution_required": false,
+      "commercial_use": true,
+      "modification_allowed": true,
+      "note": "AI-generated original — Penjaga Kebun (karakter fiksi)"
+    },
+    {
+      "name": "episode_thumbnails_ep1_ep6",
+      "type": "image",
+      "source_url": "generated/pollinations.ai",
+      "tool": "Pollinations.ai",
+      "prompt_summary": "6 scene anime (railway dusk, alley lamp, festival fireworks, rooftop garden, music box, pink sunset bridge), cel shading, cinematic, per-episode palette",
+      "license": "user-defined",
+      "attribution_required": false,
+      "commercial_use": true,
+      "modification_allowed": true,
+      "note": "AI-generated original scenes"
+    },
+    {
+      "name": "font_rocknroll_one",
+      "type": "webfont",
+      "source_url": "https://fonts.google.com/specimen/RocknRoll+One",
+      "creator": "Fontworks Inc.",
+      "license": "OFL-1.1",
+      "license_url": "https://openfontlicense.org/",
+      "attribution_required": false,
+      "commercial_use": true,
+      "modification_allowed": true,
+      "redistribution_allowed": true,
+      "retrieved_at": "2026-08-31"
+    },
+    {
+      "name": "font_zen_kaku_gothic_new",
+      "type": "webfont",
+      "source_url": "https://fonts.google.com/specimen/Zen+Kaku+Gothic+New",
+      "creator": "Yoshimichi Ohira",
+      "license": "OFL-1.1",
+      "license_url": "https://openfontlicense.org/",
+      "attribution_required": false,
+      "commercial_use": true,
+      "modification_allowed": true,
+      "redistribution_allowed": true,
+      "retrieved_at": "2026-08-31"
+    }
+  ],
+  "declarations": {
+    "external_images": "0 external — 10 images semua AI-generated original via Pollinations.ai (Tier: generated/user-defined)",
+    "tier2_assets": "0 — tidak ada aset Waifu.pics/Waifu.im",
+    "tier3_assets": "0 — tidak ada aset rip game / screenshot anime komersial",
+    "css_art": "signature elements (speed lines, halftone, kanji, SFX) tetap CSS original",
+    "note": "Sesuai skill anime-web-studio v1.1.0 — Mode: demo lokal, aset generated aman untuk production"
+  }
+}

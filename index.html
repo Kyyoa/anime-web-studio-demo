@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KISEKI 軌跡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      background: #FDFEFF;
+      display: flex;
+      min-height: 100vh;
+      color: #1F2F6D;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .sidebar {
+      width: 220px;
+      background: #1F2F6D;
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      flex-shrink: 0;
+      color: #FDFEFF;
+    }
+    .logo {
+      font-family: 'RocknRoll One', sans-serif;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .logo .mark {
+      display: grid; place-items: center;
+      width: 38px; height: 38px;
+      background: #FDFEFF;
+      color: #1F2F6D;
+      font-size: 1.1rem;
+      border-radius: 8px;
+    }
+    .nav-side {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .nav-side a {
+      padding: .5rem .6rem;
+      border-radius: 6px;
+      opacity: 0.6;
+      transition: .15s;
+      font-weight: 500;
+    }
+    .nav-side a:hover,
+    .nav-side a.active {
+      opacity: 1;
+      background: rgba(255,255,255,0.08);
+    }
+    .nav-cta {
+      font-family: 'RocknRoll One', sans-serif;
+      padding: .6rem 1rem;
+      background: #FDFEFF;
+      color: #1F2F6D;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: auto;
+      font-weight: 700;
+      transition: .12s;
+    }
+    .nav-cta:hover { transform: scale(1.02); background: #e6e9f0; }
+    .social {
+      display: flex;
+      gap: 1rem;
+      font-size: .8rem;
+      opacity: 0.5;
+    }
+    .social a:hover { opacity: 1; }
+
+    .main {
+      flex: 1;
+      padding: 2rem 2.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      background: #FDFEFF;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(31,47,109,0.10);
+      overflow: hidden;
+      border: 1px solid rgba(31,47,109,0.05);
+    }
+    .hero-card .hero-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid rgba(31,47,109,0.05);
+    }
+    .hero-card .hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-card .hero-img .halftone {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(31,47,109,0.06) 1px, transparent 1px);
+      background-size: 10px 10px;
+      pointer-events: none;
+    }
+    .hero-card .hero-img .vtext {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      font-family: 'RocknRoll One', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: .5em;
+      color: rgba(255,255,255,0.5);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      pointer-events: none;
+      user-select: none;
+      font-weight: 700;
+    }
+    .hero-card .hero-body {
+      padding: 1.5rem 1.8rem 1.8rem;
+    }
+    .hero-card .hero-body h1 {
+      font-family: 'RocknRoll One', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #1F2F6D;
+    }
+    .hero-card .hero-body h1 .accent {
+      color: #1F2F6D;
+      opacity: 0.25;
+    }
+    .hero-card .hero-body .sub {
+      font-size: .9rem;
+      color: #1F2F6D;
+      opacity: 0.5;
+      margin: .3rem 0 1rem;
+      letter-spacing: .15em;
+    }
+    .hero-card .hero-body p {
+      color: #1F2F6D;
+      opacity: 0.65;
+      font-size: .95rem;
+      margin-bottom: 1.4rem;
+      max-width: 90%;
+    }
+    .btn-row {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: 'RocknRoll One', sans-serif;
+      font-size: .9rem;
+      padding: .6rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      transition: .15s;
+      cursor: pointer;
+      background: #1F2F6D;
+      color: #FDFEFF;
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(31,47,109,0.25);
+      background: #2a3d8a;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: #1F2F6D;
+      border: 1.5px solid #1F2F6D;
+    }
+    .btn-ghost:hover {
+      background: rgba(31,47,109,0.04);
+      box-shadow: none;
+      transform: translateY(-2px);
+    }
+
+    .right-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      align-content: start;
+    }
+    .grid-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(31,47,109,0.05);
+      padding: 1.2rem 1.2rem 1.4rem;
+      border: 1px solid rgba(31,47,109,0.04);
+      transition: .14s;
+    }
+    .grid-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(31,47,109,0.08);
+    }
+    .grid-card .label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #1F2F6D;
+      opacity: 0.35;
+      border-bottom: 1.5px solid rgba(31,47,109,0.06);
+      padding-bottom: .3rem;
+      margin-bottom: .8rem;
+    }
+    .grid-card .content {
+      font-size: .9rem;
+      color: #1F2F6D;
+    }
+    .grid-card .content .item {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .2rem 0;
+      opacity: 0.7;
+    }
+    .grid-card .content .item .dot {
+      width: 6px;
+      height: 6px;
+      background: #1F2F6D;
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.25;
+    }
+    .grid-card .chibi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+    }
+    .grid-card .chibi-grid .chibi {
+      aspect-ratio: 1/1;
+      background: #FDFEFF;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      color: #1F2F6D;
+      opacity: 0.5;
+      border: 1px solid rgba(31,47,109,0.06);
+    }
+    .grid-card .chibi-grid .chibi img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .grid-card .art-row {
+      display: flex;
+      gap: .6rem;
+      margin-top: .4rem;
+    }
+    .grid-card .art-row .art-thumb {
+      flex: 1;
+      aspect-ratio: 1/1;
+      background: #FDFEFF;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(31,47,109,0.06);
+    }
+    .grid-card .art-row .art-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .link-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .4rem;
+    }
+    .link-bar a {
+      font-size: .75rem;
+      color: #1F2F6D;
+      opacity: 0.5;
+      padding: .1rem .5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(31,47,109,0.07);
+      transition: .1s;
+    }
+    .link-bar a:hover {
+      opacity: 1;
+      background: rgba(31,47,109,0.04);
+      border-color: rgba(31,47,109,0.15);
+    }
+
+    @media (max-width: 1100px) {
+      .main { grid-template-columns: 1fr; }
+      .right-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .sidebar { display: none; }
+      .main { padding: 1.5rem; }
+      .right-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <a class="logo" href="#">
+    <span class="mark">軌</span> KISEKI
+  </a>
+  <nav class="nav-side">
+    <a href="#" class="active">Beranda</a>
+    <a href="#">Episode</a>
+    <a href="#">Karakter</a>
+    <a href="#">Berita</a>
+  </nav>
+  <a class="nav-cta" href="#">▶ Tonton</a>
+  <div class="social">
+    <a href="#">Tw</a>
+    <a href="#">Ig</a>
+    <a href="#">Yt</a>
+  </div>
+</aside>
+
+<div class="main">
+
+  <section class="hero-card">
+    <div class="hero-img">
+      <img src="assets/img/hero-b.jpg" alt="KISEKI Hero" loading="lazy">
+      <div class="halftone"></div>
+      <div class="vtext" lang="ja">軌跡を追いかけて</div>
+    </div>
+    <div class="hero-body">
+      <h1>KI<span class="accent">S</span>EKI<span class="accent">.</span></h1>
+      <div class="sub">軌跡 — Jejak Cahaya</div>
+      <p>Rin mengejar bayangan masa lalu di kota yang tak pernah tidur. Episode baru setiap Jumat.</p>
+      <div class="btn-row">
+        <a class="btn" href="#">▶ Tonton EP 01</a>
+        <a class="btn btn-ghost" href="#">+ Daftar</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="right-grid">
+
+    <div class="grid-card">
+      <div class="label">Region</div>
+      <div class="content">
+        <div class="item"><span class="dot"></span> Shibuya</div>
+        <div class="item"><span class="dot"></span> Shinjuku</div>
+        <div class="item"><span class="dot"></span> Akihabara</div>
+      </div>
+    </div>
+
+    <div class="grid-card">
+      <div class="label">Chibi Characters</div>
+      <div class="chibi-grid">
+        <div class="chibi"><img src="assets/img/char-rin.jpg" alt="Rin"></div>
+        <div class="chibi"><img src="assets/img/char-kenji.jpg" alt="Kenji"></div>
+        <div class="chibi"><img src="assets/img/char-guardian.jpg" alt="Guardian"></div>
+        <div class="chibi" style="background:#f0f2f8;">+3</div>
+      </div>
+    </div>
+
+    <div class="grid-card">
+      <div class="label">Artwork</div>
+      <div class="art-row">
+        <div class="art-thumb"><img src="assets/img/ep1.jpg" alt="Art 1"></div>
+        <div class="art-thumb"><img src="assets/img/ep3.jpg" alt="Art 2"></div>
+        <div class="art-thumb"><img src="assets/img/ep5.jpg" alt="Art 3"></div>
+      </div>
+    </div>
+
+    <div class="grid-card">
+      <div class="label">Quick Links</div>
+      <div class="link-bar">
+        <a href="#">Trailer</a>
+        <a href="#">Gallery</a>
+        <a href="#">Staff</a>
+        <a href="#">Merch</a>
+        <a href="#">Forum</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
